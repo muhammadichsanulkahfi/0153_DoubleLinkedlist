@@ -82,4 +82,42 @@ class DoubleLinkedList
 
     }
 
+    void hapus()
+    {
+        if (START == NULL)
+        {
+            cout << "\nList is empty" <<endl;
+            return;
+        }
+
+        cout << "\nMasukkan NIM yang akan didalete";
+        int rollNo;
+        cin >> rollNo;
+
+        Node *current = START;
+
+        //Step 1: Tranverse the list to find the node
+        while(current != NULL && current->noMhs != rollNo)
+        {
+            current = current->next;
+        }
+
+        if (current == NULL)
+        {
+            cout << "Record not found" << endl;
+            return;
+        }
+
+        //step 2: If node is at the beginning
+        if (current == START)
+        {
+            START =current->next; //step 2a: START = START.next
+            if (START != NULL)
+            {
+                START->prev = NULL; //step 2b: START.prev = NULL
+            }
+        }
+    }
+
+
 }

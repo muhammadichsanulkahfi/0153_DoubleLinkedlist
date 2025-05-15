@@ -60,6 +60,25 @@ class DoubleLinkedList
         //step 8: Locate position for inserttion
         Node *Current = START;
         while (Current->next != NULL && Current->next->noMhs < nim)
+        {
+            Current = Current->next;
+
+        }
+         
+        if (Current->next != NULL && nim == Current->next->noMhs)
+        {
+            cout << "\nDuplicate roll number not allowed" <<endl;
+            return;
+        }
+
+        //step 9: Insert between current and current->next
+        newNode->next = Current->next;    //step 9a: newNode.next = current.next
+        newNode->prev = Current;          //step 9b: newNode.prev = current
+
+        //insert last node
+        if(Current->next != NULL)
+        Current->next->prev = newNode;  //step 9c: curremt.next.prev = newNode
+        Current->next = newNode;        //step 9d: curremt.next = newNode
 
     }
 
